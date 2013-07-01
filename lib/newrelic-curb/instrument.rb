@@ -3,7 +3,7 @@ require 'newrelic_rpm'
 
 ::Curl::Easy.class_eval do
   def host
-    URI.parse(self.url).host
+    URI.parse((self.url.start_with?('http') ? '' : 'http://') + self.url).host
   end
 
   def perform_with_newrelic_trace(*args, &block)
