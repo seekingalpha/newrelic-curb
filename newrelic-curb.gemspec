@@ -2,7 +2,8 @@ Gem::Specification.new do |s|
 	s.name        = 'newrelic-curb'
 	s.version     = '0.0.1'
 	s.license     = "MIT"
-	s.summary     = "Curb instrumentation for Newrelic."
+	s.summary     = "Curb instrumentation for New Relic."
+	s.description = "Wraps Curl::Easy.perform to send per-host metrics to New Relic"
 	s.authors     = ["Keith Thornhill"]
 	s.email       = %q{keith.thornhill@gmail.com}
 	s.homepage    = "https://github.com/afex/newrelic-curb"
