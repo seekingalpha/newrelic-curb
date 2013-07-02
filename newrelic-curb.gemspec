@@ -1,6 +1,8 @@
+# -*- encoding: utf-8 -*-
+
 Gem::Specification.new do |s|
 	s.name        = 'newrelic-curb'
-	s.version     = '0.0.1'
+	s.version     = '0.0.2'
 	s.license     = "MIT"
 	s.summary     = "Curb instrumentation for New Relic."
 	s.description = "Wraps Curl::Easy.perform to send per-host metrics to New Relic"
@@ -9,6 +11,7 @@ Gem::Specification.new do |s|
 	s.homepage    = "https://github.com/afex/newrelic-curb"
 
 	s.require_paths = ["lib"]
+	s.files = ['lib/newrelic-curb.rb', 'lib/newrelic-curb/instrument.rb']
 	s.add_dependency('curb')
 	s.add_dependency('newrelic_rpm')
 	
