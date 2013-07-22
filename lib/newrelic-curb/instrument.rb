@@ -13,7 +13,11 @@ require 'newrelic_rpm'
     else
       metrics << "External/allOther"
     end
-    self.class.trace_execution_scoped metrics do
+    if self.class.respond_to?(:trace_execution_scoped)
+      self.class.trace_execution_scoped metrics do
+        perform_without_newrelic_trace(*args, &block)
+      end
+    else
       perform_without_newrelic_trace(*args, &block)
     end
   end
