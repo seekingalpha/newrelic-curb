@@ -2,8 +2,13 @@ require 'curb'
 require 'newrelic_rpm'
 
 ::Curl::Easy.class_eval do
+  URI_CLASS = defined?(::Addressable) ? ::Addressable::URI : URI
   def host
-    URI.parse((self.url.start_with?('http') ? '' : 'http://') + self.url).host
+    if self.url.respond_to?(:host)
+      self.url.host
+    else
+      URI_CLASS.parse("#{self.url.start_with?('http') ? '' : 'http://'}#{self.url}").host
+    end
   end
 
   def perform_with_newrelic_trace(*args, &block)
